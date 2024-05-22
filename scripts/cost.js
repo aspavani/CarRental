@@ -9,6 +9,20 @@ function init() {
 
 function onTCostbtnClicked() {
     let tc = 0;
+
+    let fs_ele = document.getElementById("fs");
+    let tcpara_ele = document.getElementById("tcpara");
+
+    if(tcpara_ele)
+        fs_ele.removeChild(tcpara_ele);
+
+    let pickup_date = document.getElementById("pickupdate").value;
+    if (!pickup_date) {
+        alert('Please enter a pick up date');
+        return;
+    }
+
+
     let numdays_ele = document.getElementById("numdays");
     let numdays = Number(numdays_ele.value);
 
@@ -48,9 +62,10 @@ function onTCostbtnClicked() {
         `Total due: $ ${tc.toFixed(2)}`;
     let p_ele = document.createElement("p");
     p_ele.innerHTML = pmsg;
+    p_ele.id = "tcpara";
     p_ele.style.textAlign = "center";
 
-    let fs_ele = document.getElementById("fs");
+    
     fs_ele.appendChild(p_ele);
 
 }
